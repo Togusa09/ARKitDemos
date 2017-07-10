@@ -13,6 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var redMaterial : SCNMaterial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
 //        sceneView.scene = scene
+        
+         redMaterial = SCNMaterial()
+        redMaterial.diffuse.contents = UIColor.red
+        
+        redMaterial.diffuse.contents = UIColor(red: 0.67, green: 0.0, blue: 0.0, alpha: 0.5)
+        //redMaterial.blendMode = SCNBlendMode.alpha
+        
     }
     
     func renderer(_ renderer: SCNSceneRenderer,
@@ -43,10 +51,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print(planeAnchor.alignment)
             
             let box = SCNBox(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.y), length: CGFloat(planeAnchor.extent.z), chamferRadius: 0.01)
+            box.materials = [redMaterial]
+            
             node.geometry = box;
         }
-        
-        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer,
+                  didUpdate node: SCNNode,
+                  for anchor: ARAnchor){
+        if let planeAnchor = anchor as? ARPlaneAnchor{
+            if let box = node.geometry as? SCNBox{
+                box.width = CGFloat(planeAnchor.extent.x);
+                box.height = CGFloat(planeAnchor.extent.y);
+                box.length = CGFloat(planeAnchor.extent.z);
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
