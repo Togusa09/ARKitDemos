@@ -21,23 +21,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
-        // Create a new scene
-        //let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-//        sceneView.scene = scene
-        
-         redMaterial = SCNMaterial()
+        redMaterial = SCNMaterial()
         redMaterial.diffuse.contents = UIColor.red
         
         redMaterial.diffuse.contents = UIColor(red: 0.67, green: 0.0, blue: 0.0, alpha: 0.5)
-        //redMaterial.blendMode = SCNBlendMode.alpha
-        
     }
     
     func renderer(_ renderer: SCNSceneRenderer,

@@ -45,8 +45,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let cubeNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01))
         cubeNode.position = SCNVector3(0, 0, -0.2) // SceneKit/AR coordinates are in meters
         
-        
-        
         sceneView.scene.rootNode.addChildNode(cubeNode)
     }
     
