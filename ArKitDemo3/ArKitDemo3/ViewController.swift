@@ -48,7 +48,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    func renderer(_ renderer: SCNSceneRenderer,
+    func renderer(_ renderer: SCNSceneRenderer,  
                   didUpdate node: SCNNode,
                   for anchor: ARAnchor){
         if let planeAnchor = anchor as? ARPlaneAnchor{
@@ -64,7 +64,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingSessionConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         
         // Run the view's session
